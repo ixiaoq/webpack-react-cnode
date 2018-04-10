@@ -27,7 +27,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
-        host: '192.168.1.31',
+        host: 'localhost',
         port: 8080
     },
 
