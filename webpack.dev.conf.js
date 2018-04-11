@@ -16,11 +16,32 @@ module.exports = {
 
     // babel解析
     module: {
-        rules: [{
-            test: /\.js$/,
-            use: ["babel-loader?cacheDirectory=true"],
-            include: path.join(__dirname, 'src')
-        }]
+        rules: [
+            {
+                test: /\.js$/,
+                use: ["babel-loader?cacheDirectory=true"],
+                include: path.join(__dirname, 'src')
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+        ]
     },
 
     // 服务器
