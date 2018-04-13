@@ -1,12 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import style from './index.scss';
-console.log(style);
+import {Provider} from 'react-redux';
+import store from './redux/store';
+
+import Counter from './page/Counter/counter'
+
 render(
-    <div className={style.border}>123456789
-        <div className={style.a}>213</div>
-    </div>,
+    <Provider store={store}>
+        <Counter/>
+    </Provider>,
     document.getElementById("react-root")
 )
 
