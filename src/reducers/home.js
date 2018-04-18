@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux'
 import {
   GET_TOPICS_REQUEST,
   GET_TOPICS_SUCCESS,
   GET_TOPICS_FAIL
-} from '../actions/home'
+} from 'actions/home'
 
 
 const initState = {

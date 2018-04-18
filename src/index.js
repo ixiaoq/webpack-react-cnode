@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-import store from './reducers'
-import Router from './router';
+import store from 'reducers'
+import App from 'router';
 
 render(
     <Provider store={store}>
-        <Router/>
+        <App/>
     </Provider>,
     document.getElementById('react-root')
 )

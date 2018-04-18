@@ -2,18 +2,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import getTopics from '../actions/home'
+import getTopics from 'actions/home';
+
+// 组件
+import Head from 'components/Head/Head';
+import Footer from 'components/Footer/Footer';
+
+import style from './home.scss';
+
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             page: 1,
-            limit: 10
+            limit: 40
         }
     }
 
+    componentDidMount() {
+        this._getTopics();
+    }
+
     myClick() {
+        this._getTopics();
+    }
+
+    _getTopics() {
         const { page, limit } = this.state;
         this.props.getTopics({page, limit});
         this.setState({
@@ -43,9 +58,10 @@ class Home extends Component {
         }
 
         return (
-            <div>
-                <button onClick={() => this.myClick()}>get</button>
+            <div className={style.homeContainer}>
+                <Head/>
                 <ul>{topicItems}</ul>
+                <Footer/>
             </div>
         )
     }

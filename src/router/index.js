@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 
-import Home from '../components/Home';
+import Home from 'pages/Home/Home';
 
 
 class RouterMap extends Component {
@@ -25,9 +25,9 @@ class RouterMap extends Component {
 class App extends Component {
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <RouterMap />
-            </div>
+            </React.Fragment>
         )
     }
 }

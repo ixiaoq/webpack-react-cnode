@@ -24,7 +24,7 @@ module.exports = {
                 include: path.join(__dirname, 'src')
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpeg|jpg|gif)$/,
                 use: [
                     {
                         loader: "url-loader",
@@ -40,17 +40,30 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader?modules', 'sass-loader']
             }
         ]
+    },
+
+    // 别名
+    resolve: {
+        alias: {
+            actions: path.join(__dirname, 'src/actions'),
+            api: path.join(__dirname, 'src/api'),
+            components: path.join(__dirname, 'src/components'),
+            pages: path.join(__dirname, 'src/pages'),
+            images: path.join(__dirname, 'src/images'),
+            reducers: path.join(__dirname, 'src/reducers'),
+            router: path.join(__dirname, 'src/router')
+        }
     },
 
     // 服务器
     devServer: {
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
-        host: 'localhost',
-        port: 8080
+        host: '192.168.1.31',
+        port: 8000
     },
 
     // 插件

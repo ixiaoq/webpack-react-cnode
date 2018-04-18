@@ -1,5 +1,5 @@
 import axios from 'axios';
-import API from '../api/api';
+import API from 'api/api';
 
 export const GET_TOPICS_REQUEST = 'topics/GET_TOPICS_REQUEST';
 export const GET_TOPICS_SUCCESS = 'topics/GET_TOPICS_SUCCESS';
