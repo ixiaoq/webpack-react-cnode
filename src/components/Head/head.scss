@@ -1,8 +1,14 @@
 .headContainer {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+}
+
+.logo {
+    display: block;
+    width: 160px;
     padding: 0 20px;
-    min-height: 50px;
-    background: #444;
+    
+    img {
+        width: 100%;
+    }
 }

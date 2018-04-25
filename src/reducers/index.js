@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 const loggerMiddleware = createLogger();
 
-import home from 'reducers/home';
+import home from 'reducers/homeContent';
 
 const reducers = combineReducers({
     home

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import API from 'api/api';
 
-export const GET_TOPICS_REQUEST = 'topics/GET_TOPICS_REQUEST';
-export const GET_TOPICS_SUCCESS = 'topics/GET_TOPICS_SUCCESS';
-export const GET_TOPICS_FAIL = 'topics/GET_TOPICS_FAIL';
+export const GET_TOPICS_REQUEST = 'homeContent/GET_TOPICS_REQUEST';
+export const GET_TOPICS_SUCCESS = 'homeContent/GET_TOPICS_SUCCESS';
+export const GET_TOPICS_FAIL = 'homeContent/GET_TOPICS_FAIL';
 
 const getTopicsRequest = () => {
   return { 
