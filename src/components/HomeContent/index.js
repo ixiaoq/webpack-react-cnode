@@ -8,11 +8,12 @@ import getTopics from 'actions/homeContent';
 import HContent from './components/Content';
 import HSider from './components/Sider';
 
-
+import style from './index.scss';
 
 class HomeContent extends Component {
     constructor(props) {
         super(props);
+        // 请求参数
         this.state = {
             page: 1,
             limit: 40
@@ -35,27 +36,13 @@ class HomeContent extends Component {
         });
     }
 
-    _headlerTopicsDom(isLoad, topicsArr) {
-        // 请求加载状态
-        if (isLoad == 1) {
-            return <div>正在加载中...</div>
-        }
-        else if (isLoad == 2) {
-            return topicsArr.map(item => (
-                <div key={item.id.toString()}>{item.title}</div>
-            ));
-        }
-    }
-
     render() {
-        let topicsData = this.props.topics;
-        let topicsArr = topicsData.topicsList;
 
-        let topicItems = this._headlerTopicsDom(topicsData.isLoad, topicsArr);
+        const { topics } = this.props;
         
         return (
-            <div>
-                <HContent topicsData={topicItems}/>
+            <div className={style.container}>
+                <HContent topicsData={topics}/>
             
                 <HSider/>
             </div>
