@@ -56,7 +56,7 @@ export default class Head extends Component {
                 <Search
                     placeholder="input search text"
                     onSearch={value => console.log(value)}
-                    style={{ width: 200, height: 36 }}
+                    style={{ width: 200, height: 30 }}
                 />
 
                 <HeadNav navData={navData} headNavStyle={headNavStyle} />
