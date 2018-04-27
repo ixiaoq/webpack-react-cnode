@@ -42,9 +42,10 @@ class HomeContent extends Component {
         
         return (
             <div className={style.container}>
+                {/* <HSider/> */}
+                
                 <HContent topicsData={topics}/>
             
-                <HSider/>
             </div>
         )
     }

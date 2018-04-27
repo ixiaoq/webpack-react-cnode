@@ -3,11 +3,13 @@ import { hot } from 'react-hot-loader';
 import {
     BrowserRouter as Router,
     Route,
-    Switch
+    Switch,
+    Redirect
 } from 'react-router-dom';
 
 
 import Home from 'pages/Home/Home';
+import Login from 'pages/Login/Login';
 
 
 class RouterMap extends Component {
@@ -16,6 +18,8 @@ class RouterMap extends Component {
             <Router>
                 <Switch>
                     <Route path='/' component={Home}/>
+                    <Route path='/login' component={Login}/>
+                    <Redirect to="/" />
                 </Switch>
             </Router>
         )

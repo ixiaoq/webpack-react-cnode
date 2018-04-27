@@ -4,9 +4,9 @@ import { Layout } from 'antd';
 const { Header, Content, Sider, Footer } = Layout;
 
 // 组件
-import Head from 'components/Head/Head';
+import BaseHead from 'components/BaseHead/BaseHead';
 import HomeContent from 'components/HomeContent';
-import Foot from 'components/Footer/Footer';
+import BaseFooter from 'components/BaseFooter/BaseFooter';
 
 import style from './home.scss';
 
@@ -17,7 +17,7 @@ class Home extends Component {
             <div className={style.homeContainer}>
                 <Layout>
                     <Header>
-                        <Head/>
+                        <BaseHead/>
                     </Header>
                     
                     <Content>
@@ -25,7 +25,7 @@ class Home extends Component {
                     </Content>
 
                     <Footer>
-                        <Foot/>
+                        <BaseFooter/>
                     </Footer>
                 </Layout>
             </div>

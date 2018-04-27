@@ -3,7 +3,7 @@ import { Input } from 'antd';
 
 import HeadNav from './HeadNav';
 
-import style from './head.scss';
+import style from './BaseHead.scss';
 
 
 export default class Head extends Component {
