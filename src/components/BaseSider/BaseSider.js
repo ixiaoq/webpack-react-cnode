@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import style from "./Sider.scss";
+import style from "./BaseSider.scss";
 
 import ContainerBar from "components/ContainerBar/ContainerBar";
 

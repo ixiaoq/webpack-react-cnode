@@ -17,7 +17,7 @@ class RouterMap extends Component {
         return (
             <Router>
                 <Switch>
-                    <Route path='/' component={Home}/>
+                    <Route exact path='/' component={Home}/>
                     <Route path='/login' component={Login}/>
                     <Redirect to="/" />
                 </Switch>

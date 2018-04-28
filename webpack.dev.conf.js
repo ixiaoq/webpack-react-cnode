@@ -54,7 +54,8 @@ module.exports = {
             pages: path.join(__dirname, 'src/pages'),
             images: path.join(__dirname, 'src/images'),
             reducers: path.join(__dirname, 'src/reducers'),
-            router: path.join(__dirname, 'src/router')
+            router: path.join(__dirname, 'src/router'),
+            utils: path.join(__dirname, 'src/utils')
         }
     },
 

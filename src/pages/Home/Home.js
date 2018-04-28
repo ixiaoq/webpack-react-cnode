@@ -13,6 +13,9 @@ import style from './home.scss';
 
 class Home extends Component {
     render() {
+
+        let { history, location, match } = this.props;
+
         return (
             <div className={style.homeContainer}>
                 <Layout>
@@ -21,7 +24,7 @@ class Home extends Component {
                     </Header>
                     
                     <Content>
-                        <HomeContent/>
+                        <HomeContent history={history} location={location} match={match}/>
                     </Content>
 
                     <Footer>

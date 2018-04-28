@@ -1,0 +1,36 @@
+.contentBar {
+    // margin-right: 305px;
+}
+
+.topicsList {
+    
+}
+
+.contWrap {
+    display: flex;
+    padding: 0 10px;
+}
+
+.itemImg {
+    width: 30px;
+    height: 30px;
+
+    img {
+        width: 100%;
+    }
+}
+
+.replyCount {
+    width: 80px;
+    text-align: center;
+}
+
+.tipcTab {
+    padding: 1px 4px;
+    margin-right: 5px;
+    background: #e5e5e5;
+}
+
+.tipcActive {
+    background: #80bd01;
+}
