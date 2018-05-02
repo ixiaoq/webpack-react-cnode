@@ -39,12 +39,6 @@ export default class Head extends Component {
             link: '/login'
         }];
 
-        let headNavStyle = {
-            display: "flex",
-            justifyContent: "flex-end",
-            flex: 1
-        }
-
         const Search = Input.Search;
 
         return (
@@ -53,13 +47,13 @@ export default class Head extends Component {
                     <img src="//o4j806krb.qnssl.com/public/images/cnodejs_light.svg" />
                 </a>
 
-                <Search
+                {/* <Search
                     placeholder="input search text"
                     onSearch={value => console.log(value)}
-                    style={{ width: 200, height: 30 }}
-                />
+                    className={style.headSearch}
+                /> */}
 
-                <HeadNav navData={navData} headNavStyle={headNavStyle} />
+                <HeadNav navData={navData} />
             </div>
         )
     }

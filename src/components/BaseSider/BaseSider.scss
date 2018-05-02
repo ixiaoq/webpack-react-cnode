@@ -2,3 +2,9 @@
     float: right;
     width: 290px;
 }
+
+@media (max-width: 979px) {
+    .siderBar {
+        display: none;
+    }
+}

@@ -1,3 +1,16 @@
+.baseHead {
+    
+}
+
 .homeContainer {
     position: relative;
+}
+
+
+@media (max-width: 979px) {
+    .baseHead {
+        margin: 0 5px;
+        padding: 0;
+        height: auto;
+    }
 }

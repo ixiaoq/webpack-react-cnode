@@ -1,15 +1,45 @@
 .headContainer {
-    display: flex;
-    align-items: center;
+    padding: 10px 0;
 }
 
 .logo {
+    float: left;
     display: block;
     width: 160px;
-    padding: 0 20px;
+    line-height: 1;
+    padding: 2px 15px;
     
     img {
         width: 100%;
         vertical-align: initial;
+    }
+}
+
+.headSearch { 
+    float: left;
+    width: 200px;
+    height: 30px
+}
+
+.headNavStyle {
+    float: right;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+
+@media (max-width: 979px) {
+    .headContainer {
+        display: block;
+    }
+    .logo {
+        float: none;
+    }
+
+    .headNavStyle {
+        float: none;
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
 }

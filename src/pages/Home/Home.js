@@ -19,7 +19,7 @@ class Home extends Component {
         return (
             <div className={style.homeContainer}>
                 <Layout>
-                    <Header>
+                    <Header className={style.baseHead}>
                         <BaseHead/>
                     </Header>
                     

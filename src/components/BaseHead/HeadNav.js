@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 
+import style from './BaseHead.scss';
 
 export default class HeadNav extends Component {
     render() {
 
-        const { headNavStyle, navData } = this.props;
+        const { navData } = this.props;
 
         const navItems = navData.map((item, index) => {
             return (
@@ -21,7 +22,7 @@ export default class HeadNav extends Component {
             <Menu 
                 mode="horizontal" 
                 theme="dark"
-                style={headNavStyle}
+                className={style.headNavStyle}
             >
                 { navItems }
             </Menu>

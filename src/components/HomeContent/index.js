@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { BackTop } from 'antd';
+
+
 import getTopics from 'actions/homeContent';
 import { getUrlParamObj } from 'utils/utils';
 
@@ -32,21 +35,32 @@ class HomeContent extends Component {
         }
     }
 
-    myClick() {
-        this._getTopics(this.props.location.search);
-    }
-
     _getTopics(search) {
-        const searchParam = getUrlParamObj(search);
-
-        if ("tab" in searchParam) {
+        const { tab, page } = getUrlParamObj(search);
+        
+        if (tab) {
             this.setState({
                 ...this.state,
-                searchParam
+                tab: tab,
+                page: parseInt(page) || 1
             });
         }
+
+        let params = {
+            tab: tab, 
+            page: page, 
+            limit: this.state.limit
+        }
         
-        this.props.getTopics(this.state);
+        this.props.getTopics(params);
+    }
+
+    _handlerPagination(page) {
+        this.props.history.push(`/?tab=${this.state.tab}&page=${page}`);
+        this.setState({
+            ...this.state,
+            page
+        });
     }
 
     render() {
@@ -55,9 +69,17 @@ class HomeContent extends Component {
         
         return (
             <div className={style.container}>
-                {/* <BaseSider/> */}
+                <BackTop/>
+
+                <BaseSider/>
                 
-                <HContent topicsData={topics} />
+                <HContent 
+                    topicsData={topics} 
+                    urlData={this.state}
+                    handlerPagination={(page) => {
+                        this._handlerPagination(page);
+                    }}
+                />
             
             </div>
         )

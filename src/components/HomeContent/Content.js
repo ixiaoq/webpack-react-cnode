@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
+import { Pagination, Spin  } from 'antd';
 
 import style from './Content.scss';
 
@@ -21,16 +22,24 @@ const tagTab = {
         { tab: "share", name: "分享" },
         { tab: "ask", name: "问答" },
         { tab: "job", name: "招聘" },
-        { tab: "dev", name: "测试" }
+        { tab: "dev", name: "测试客户端" }
     ]
 };
 
 class ContentNav extends Component {
     render() {
+
+        let { tab } = this.props;
+
         return (
-            <div className="nav">
+            <div className={style.contentNav}>
                 {tagTab.data.map((item) => (
-                    <NavLink to={`/?tab=${item.tab}`} key={item.tab}>{item.name}</NavLink>
+                    <NavLink 
+                        className={`${style.tipcTag} ${(tab === item.tab) && style.currentTag}`}
+                        to={`/?tab=${item.tab}`} 
+                        key={item.tab} >
+                        {item.name}
+                    </NavLink>
                 ))}
             </div>
         )
@@ -85,7 +94,7 @@ class ContentItems extends Component {
                     {keyName}
                 </span>
                 
-                {title}
+                <div className={style.contentTile}>{title}</div>
             </div>
         )
     }
@@ -97,7 +106,7 @@ export default class Content extends Component {
 
     render() {
         
-        let { topicsData } = this.props;
+        let { topicsData, urlData, handlerPagination } = this.props;
 
         let { isLoad, topicsList, errorMsg } = topicsData;
 
@@ -105,7 +114,7 @@ export default class Content extends Component {
 
         // 请求加载状态
         if (isLoad == 1) {
-            topicItems = <div>正在加载中...</div>
+            topicItems = <Spin/>
         }
         else if (isLoad == 2) {
             topicItems = topicsList.map(item => (
@@ -116,12 +125,21 @@ export default class Content extends Component {
         return (
             <div className={style.contentBar}>
                 <ContainerBar>
-                    <ContentNav/>
+                    <ContentNav tab={urlData.tab} />
                     
                     <div className={style.topicsList}>
                         { topicItems }
                     </div>
                     
+                    <Pagination className={style.pagination} 
+                        current={urlData.page} 
+                        defaultCurrent={urlData.page} 
+                        total={500} 
+                        onChange={(page) => {
+                            handlerPagination(page);
+                        }}
+                    />
+
                 </ContainerBar>
             </div>
         )
