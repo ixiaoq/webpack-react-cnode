@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import { Pagination, Spin  } from 'antd';
 
+import { formatDate } from 'utils/utils';
+
 import style from './Content.scss';
 
 import ContainerBar from 'components/ContainerBar/ContainerBar';
@@ -60,10 +62,11 @@ class ContentItems extends Component {
 
         let { topicItem } = this.props;
 
-        let { id, tab, good, top, author, title } = topicItem;
-
+        let { id, tab, good, top, author, title, last_reply_at } = topicItem;
+        
         let keyName = "";
         let isActive = true;
+        let lastTime = formatDate(last_reply_at);
 
         if (top) {
             keyName = "置顶";
@@ -95,6 +98,8 @@ class ContentItems extends Component {
                 </span>
                 
                 <div className={style.contentTile}>{title}</div>
+
+                <div className={style.itemTime}>{lastTime}</div>
             </div>
         )
     }

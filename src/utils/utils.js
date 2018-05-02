@@ -11,3 +11,17 @@ export function getUrlParamObj(url) {
     }
     return result;
 }
+
+export function formatDate(timeStr) {
+    if (!timeStr) return timeStr;
+    
+    let diffDate = new Date() - new Date(timeStr);
+
+    if (diffDate / 1000 < 60) {
+        return "刚刚";
+    } 
+    
+    if (diffDate / 1000 / 60 < 60) {
+
+    }
+};
