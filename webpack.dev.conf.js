@@ -14,7 +14,7 @@ module.exports = {
     // 输出文件路径
     output: {
         path: path.resolve(__dirname, "./dist"),
-        filename: "[name].[chunkhash:8].bundle.js"
+        filename: "[name].[hash:8].bundle.js"
     },
 
     // babel解析
@@ -42,7 +42,12 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader?modules', 'postcss-loader', 'sass-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader?modules',
+                    'postcss-loader',
+                    'sass-loader',
+                ]
             }
         ]
     },
