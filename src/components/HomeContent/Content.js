@@ -85,21 +85,28 @@ class ContentItems extends Component {
 
         return (
             <div className={style.contWrap}>
-                <div className={style.itemImg} >
+                <a className={style.itemImgWarp} href="javascript:;">
                     <img src={topicItem.author.avatar_url} title={author.loginname}/>
-                </div>
+                </a>
 
                 <div className={style.replyCount}>
                     {`${topicItem.reply_count} / ${topicItem.visit_count}`}
                 </div>
 
-                <span className={tabClassName}>
-                    {keyName}
-                </span>
-                
-                <div className={style.contentTile}>{title}</div>
+                <div className={style.itemTime}>
+                    {lastTime}
+                </div>
 
-                <div className={style.itemTime}>{lastTime}</div>
+                <div className={style.itemContent}>
+                    <span className={tabClassName}>
+                        {keyName}
+                    </span>
+                    
+                    <a className={style.contentTile} href="javascript:;" title={title}>
+                        {title}
+                    </a>
+                </div>
+
             </div>
         )
     }
@@ -119,7 +126,7 @@ export default class Content extends Component {
 
         // 请求加载状态
         if (isLoad == 1) {
-            topicItems = <Spin/>
+            topicItems = <div className={style.modal}><Spin tip="加载中..." /></div>
         }
         else if (isLoad == 2) {
             topicItems = topicsList.map(item => (

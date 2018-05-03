@@ -2,36 +2,33 @@
     margin-right: 305px;
 }
 
-@media (max-width: 979px) {
-    .contentBar {
-        margin-right: 0;
-        margin: 0 5px;
-    }
-}
 
 .contentNav {
     display: flex;
+    padding: 5px;
+    font-size: 14px;
 }
 
 .tipcTag {
-    padding: 10px;
+    padding: 5px;
     color: #80bd01;
 }
 
 .currentTag {
     background: #80bd01;
     color: #fff;
+    border-radius: 2px;
 }
 
 
 .topicsList {
-    min-height: 650px;
+    min-height: 70vh;
 }
 
 .contWrap {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
+    position: relative;
+    padding: 8px 10px;
+    line-height: 2em;
 
     &:not(:nth-last-of-type(1)) {
         border-bottom: 1px solid #eee;
@@ -39,7 +36,8 @@
     
 }
 
-.itemImg {
+.itemImgWarp {
+    float: left;
     width: 30px;
     height: 30px;
 
@@ -49,15 +47,21 @@
 }
 
 .replyCount {
-    width: 80px;
+    float: left;
+    width: 70px;
     text-align: center;
+}
+
+.itemContent {
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .tipcTab {
     padding: 1px 4px;
     margin-right: 5px;
     background: #e5e5e5;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .tipcActive {
@@ -66,18 +70,62 @@
 }
 
 .contentTile {
-    max-width: 70%;
-    overflow: hidden;
-    white-space: nowrap;
     display: inline-block;
-    vertical-align: middle;
+    max-width: 70%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #333;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 .itemTime {
-    
+    float: right;
+    margin-left: 20px;
 }
 
 .pagination {
     padding: 0 10px 10px 10px;
+}
+
+.modal {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 979px) {
+    .contentBar {
+        margin-right: 0;
+        margin: 0 5px;
+    }
+
+    .replyCount {
+        position: absolute;
+        bottom: 0;
+        left: 88px;
+        font-size: 62.5%;
+        text-align: left;
+        line-height: 1.3em;
+    }
+
+    .itemTime {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 62.5%;
+        line-height: 1.3em;
+    }
+
+    .itemContent {
+        padding-left: 40px;
+    }
+
+    .contentTile {
+        font-size: 14px;
+    }
 }
