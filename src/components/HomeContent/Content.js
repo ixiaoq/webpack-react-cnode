@@ -10,23 +10,14 @@ import ContainerBar from 'components/ContainerBar/ContainerBar';
 
 
 
-const tagTab = {
-    index: {
-        all: 0,
-        good: 1,
-        share: 2,
-        ask: 3,
-        job: 4
-    },
-    data: [
-        { tab: "all", name: "全部" },
-        { tab: "good", name: "精华" },
-        { tab: "share", name: "分享" },
-        { tab: "ask", name: "问答" },
-        { tab: "job", name: "招聘" },
-        { tab: "dev", name: "测试客户端" }
-    ]
-};
+const tagTab = [
+    { tab: "all", name: "全部" },
+    { tab: "good", name: "精华" },
+    { tab: "share", name: "分享" },
+    { tab: "ask", name: "问答" },
+    { tab: "job", name: "招聘" },
+    { tab: "dev", name: "测试客户端" }
+];
 
 class ContentNav extends Component {
     render() {
@@ -35,7 +26,7 @@ class ContentNav extends Component {
 
         return (
             <div className={style.contentNav}>
-                {tagTab.data.map((item) => (
+                {tagTab.map((item) => (
                     <NavLink 
                         className={`${style.tipcTag} ${(tab === item.tab) && style.currentTag}`}
                         to={`/?tab=${item.tab}`} 
@@ -50,17 +41,17 @@ class ContentNav extends Component {
 
 class ContentItems extends Component {
 
-    handlerTab(tagTabs, tab) {
-        let { index, data } = tagTabs;
-        
+    handlerTab(tabList, tab) {
         if (!tab) return "";
 
-        return data[index[tab]].name;
+        return tabList.filter((item) => {
+            return item.tab === tab;
+        })[0].name;
     }
 
     render() {
 
-        let { topicItem } = this.props;
+        let { topicItem, urlTab } = this.props;
 
         let { id, tab, good, top, author, title, last_reply_at } = topicItem;
         
@@ -71,17 +62,32 @@ class ContentItems extends Component {
         if (top) {
             keyName = "置顶";
         } 
-        else if (good) {
-            keyName = "精华";
-        } 
         else {
-            keyName = this.handlerTab(tagTab, tab);
-            isActive = false;
+
+            if (urlTab === "dev") {
+                keyName = "";
+            } 
+            else {
+                
+                if (good) {
+                    keyName = "精华";
+                } 
+                else {
+                    keyName = this.handlerTab(tagTab, tab);
+                    isActive = false;
+                }
+            }
         }
 
         // 参加类名
         var tabClassName = `${style.tipcTab} ${(isActive ? style.tipcActive : "")}`;
 
+        let tabBtn = "";
+        if (keyName) {
+            tabBtn = <span className={tabClassName}>
+                {keyName}
+            </span>
+        }
 
         return (
             <div className={style.contWrap}>
@@ -98,9 +104,7 @@ class ContentItems extends Component {
                 </div>
 
                 <div className={style.itemContent}>
-                    <span className={tabClassName}>
-                        {keyName}
-                    </span>
+                    {tabBtn}
                     
                     <a className={style.contentTile} href="javascript:;" title={title}>
                         {title}
@@ -118,7 +122,7 @@ export default class Content extends Component {
 
     render() {
         
-        let { topicsData, urlData, handlerPagination } = this.props;
+        let { topicsData, urlData, handlerPagination, urlTab } = this.props;
 
         let { isLoad, topicsList, errorMsg } = topicsData;
 
@@ -130,7 +134,7 @@ export default class Content extends Component {
         }
         else if (isLoad == 2) {
             topicItems = topicsList.map(item => (
-                <ContentItems topicItem={item} key={item.id}/>
+                <ContentItems topicItem={item} key={item.id} urlTab={urlTab}/>
             ));
         }
 

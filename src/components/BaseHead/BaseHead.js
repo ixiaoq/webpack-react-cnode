@@ -13,11 +13,13 @@ export default class Head extends Component {
             id: 0,
             title: "首页", 
             link: '/'
-        },{
-            id: 1,
-            title: "未读消息", 
-            link: '/message'
-        },{
+        },
+        // {
+        //     id: 1,
+        //     title: "未读消息", 
+        //     link: '/message'
+        // },
+        {
             id: 2,
             title: "新手入门", 
             link: '/introduction'

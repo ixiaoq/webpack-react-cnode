@@ -76,6 +76,7 @@ class HomeContent extends Component {
                 <HContent 
                     topicsData={topics} 
                     urlData={this.state}
+                    urlTab={this.state.tab}
                     handlerPagination={(page) => {
                         this._handlerPagination(page);
                     }}
